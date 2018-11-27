@@ -1,9 +1,12 @@
 import matplotlib.pyplot as plt
+# %matplotlib inline
 import numpy as np
-from keras.utils import np_utils
+
+# On some implementations of matplotlib, you may need to change this value
+IMAGE_SIZE = 72
 
 def generate_a_drawing(figsize, U, V, noise=0.0):
-    fig = plt.figure(figsize=(figsize, figsize))
+    fig = plt.figure(figsize=(figsize,figsize))
     ax = plt.subplot(111)
     plt.axis('Off')
     ax.set_xlim(0,figsize)
@@ -69,14 +72,14 @@ def generate_a_triangle(noise=0.0, free_location=False):
     return [imdata, [U[0], V[0], U[1], V[1], U[2], V[2]]]
 
 
-# im = generate_a_rectangle(10, True)
-# plt.imshow(im.reshape(72,72), cmap='gray')
-#
-# im = generate_a_disk(10)
-# plt.imshow(im.reshape(72,72), cmap='gray')
-#
+# im = generate_a_rectangle(10, True)
+# plt.imshow(im.reshape(IMAGE_SIZE,IMAGE_SIZE), cmap='gray')
+
+# im = generate_a_disk(10)
+# plt.imshow(im.reshape(IMAGE_SIZE,IMAGE_SIZE), cmap='gray')
+
 # [im, v] = generate_a_triangle(20, False)
-# plt.imshow(im.reshape(72,72), cmap='gray')
+# plt.imshow(im.reshape(IMAGE_SIZE,IMAGE_SIZE), cmap='gray')
 
 
 def generate_dataset_classification(nb_samples, noise=0.0, free_location=False):
@@ -122,7 +125,7 @@ import matplotlib.patches as patches
 
 def visualize_prediction(x, y):
     fig, ax = plt.subplots(figsize=(5, 5))
-    I = x.reshape((72,72))
+    I = x.reshape((IMAGE_SIZE,IMAGE_SIZE))
     ax.imshow(I, extent=[-0.15,1.15,-0.15,1.15],cmap='gray')
     ax.set_xlim([0,1])
     ax.set_ylim([0,1])
