@@ -123,8 +123,8 @@ def generate_dataset_regression(nb_samples, noise=0.0):
 
 import matplotlib.patches as patches
 
-def visualize_prediction(x, y):
-    fig, ax = plt.subplots(figsize=(5, 5))
+def visualize_prediction(x, y, ax):
+    # fig, ax = plt.subplots(figsize=(5, 5))
     I = x.reshape((IMAGE_SIZE,IMAGE_SIZE))
     ax.imshow(I, extent=[-0.15,1.15,-0.15,1.15],cmap='gray')
     ax.set_xlim([0,1])
@@ -134,7 +134,6 @@ def visualize_prediction(x, y):
     tri = patches.Polygon(xy, closed=True, fill = False, edgecolor = 'r', linewidth = 5, alpha = 0.5)
     ax.add_patch(tri)
 
-    plt.show()
 
 def generate_test_set_regression():
     np.random.seed(42)
